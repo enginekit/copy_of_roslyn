@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) Microsoft Open Technologies, Inc.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information. -->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\Microsoft.Net.ToolsetCompilers.0.7.4101501-beta\build\Microsoft.Net.ToolsetCompilers.props" Condition="Exists('..\..\..\packages\Microsoft.Net.ToolsetCompilers.0.7.4101501-beta\build\Microsoft.Net.ToolsetCompilers.props')" />
+  <Import Project="..\..\..\packages\Microsoft.Net.RoslynDiagnostics.0.7.4101501-beta\build\Microsoft.Net.RoslynDiagnostics.props" Condition="Exists('..\..\..\packages\Microsoft.Net.RoslynDiagnostics.0.7.4101501-beta\build\Microsoft.Net.RoslynDiagnostics.props')" />
+  <ImportGroup Label="Settings">
+    <Import Project="..\..\Tools\Microsoft.CodeAnalysis.Toolset.Open\Targets\VSL.Settings.targets" />
+  </ImportGroup>
+  <PropertyGroup>
+    <Nonshipping>true</Nonshipping>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <OutDir>..\..\..\Binaries\$(Configuration)\</OutDir>
+    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
+    <ProjectGuid>{AFDE6BEA-5038-4A4A-A88E-DBD2E4088EED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Roslyn.Test.PdbUtilities</RootNamespace>
+    <AssemblyName>Roslyn.Test.PdbUtilities</AssemblyName>
+    <StyleCopEnabled>false</StyleCopEnabled>
+    <SolutionDir Condition="'$(SolutionDir)' == '' OR '$(SolutionDir)' == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <ItemGroup Label="Linked Files">
+    <Compile Include="..\..\Compilers\Core\Portable\Collections\ArrayBuilder.cs">
+      <Link>Collections\ArrayBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Compilers\Core\Portable\Collections\ArrayBuilder.Enumerator.cs">
+      <Link>Collections\ArrayBuilder.Enumerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Compilers\Core\Portable\Collections\PooledStringBuilder.cs">
+      <Link>Collections\PooledStringBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Compilers\Core\Portable\InternalUtilities\ExceptionUtilities.cs">
+      <Link>InternalUtilities\ExceptionUtilities.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Compilers\Core\Portable\InternalUtilities\ComStreamWrapper.cs">
+      <Link>InternalUtilities\ComStreamWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Compilers\Core\Portable\InternalUtilities\ObjectPool`1.cs">
+      <Link>InternalUtilities\ObjectPool`1.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup Label="File References">
+    <Reference Include="..\..\..\packages\MDbg.0.1.0\lib\net40\CorApi.dll" />
+    <Reference Include="..\..\..\packages\MDbg.0.1.0\lib\net40\CorApiRaw.dll" />
+    <Reference Include="..\..\..\packages\MDbg.0.1.0\lib\net40\MDbgEng.dll" />
+    <Reference Include="..\..\..\packages\MDbg.0.1.0\lib\net40\MDbgExt.dll" />
+    <Reference Include="..\..\..\packages\MDbg.0.1.0\lib\net40\MDbgUtility.dll" />
+    <Reference Include="..\..\..\packages\MDbg.0.1.0\lib\net40\NativeDebugWrappers.dll" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>ARM</DefineConstants>
+    <PlatformTarget>ARM</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>ARM</DefineConstants>
+    <PlatformTarget>ARM</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\..\..\packages\System.Collections.Immutable.1.1.32-beta\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=1.0.17.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\System.Reflection.Metadata.1.0.17-beta\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Metadata\ILVisualizer.cs" />
+    <Compile Include="Metadata\ILVisualizerAsTokens.cs" />
+    <Compile Include="Metadata\MetadataVisualizer.cs" />
+    <Compile Include="Metadata\MethodILExtensions.cs" />
+    <Compile Include="Pdb\PdbToXml.cs" />
+    <Compile Include="Pdb\PdbToXmlOptions.cs" />
+    <Compile Include="Pdb\TempPdbReader.cs" />
+    <Compile Include="Pdb\Token2SourceLineExporter.cs" />
+    <Compile Include="Shared\CustomDebugInfoReader.cs" />
+    <Compile Include="Shared\DummyMetadataImport.cs" />
+    <Compile Include="Shared\IMetadataImport.cs" />
+    <Compile Include="Shared\ISymENCUnmanagedMethod.cs" />
+    <Compile Include="Shared\ISymUnmanagedDocument.cs" />
+    <Compile Include="Shared\ISymUnmanagedMethod.cs" />
+    <Compile Include="Shared\ISymUnmanagedNamespace.cs" />
+    <Compile Include="Shared\ISymUnmanagedReader.cs" />
+    <Compile Include="Shared\ISymUnmanagedReader2.cs" />
+    <Compile Include="Shared\ISymUnmanagedScope.cs" />
+    <Compile Include="Shared\ISymUnmanagedVariable.cs" />
+    <Compile Include="Shared\SymUnmanagedReaderExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleToTest Include="Roslyn.Test.Utilities" />
+    <InternalsVisibleToTest Include="Roslyn.Compilers.UnitTests" />
+  </ItemGroup>
+  <ImportGroup Label="Targets">
+    <Import Project="..\..\Tools\Microsoft.CodeAnalysis.Toolset.Open\Targets\VSL.Imports.targets" />
+    <Import Project="..\..\..\packages\StyleCop.MSBuild.4.7.48.2\build\StyleCop.MSBuild.Targets" Condition="Exists('..\..\..\packages\StyleCop.MSBuild.4.7.48.2\build\StyleCop.MSBuild.Targets')" />
+    <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.Net.ToolsetCompilers.0.7.4101501-beta\build\Microsoft.Net.ToolsetCompilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Net.ToolsetCompilers.0.7.4101501-beta\build\Microsoft.Net.ToolsetCompilers.props'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.Net.RoslynDiagnostics.0.7.4101501-beta\build\Microsoft.Net.RoslynDiagnostics.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Net.RoslynDiagnostics.0.7.4101501-beta\build\Microsoft.Net.RoslynDiagnostics.props'))" />
+  </Target>
+</Project>

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) Microsoft Open Technologies, Inc.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information. -->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\packages\Microsoft.Net.ToolsetCompilers.0.7.4101501-beta\build\Microsoft.Net.ToolsetCompilers.props" Condition="Exists('..\..\..\..\packages\Microsoft.Net.ToolsetCompilers.0.7.4101501-beta\build\Microsoft.Net.ToolsetCompilers.props')" />
+  <Import Project="..\..\..\..\packages\Microsoft.Net.RoslynDiagnostics.0.7.4101501-beta\build\Microsoft.Net.RoslynDiagnostics.props" Condition="Exists('..\..\..\..\packages\Microsoft.Net.RoslynDiagnostics.0.7.4101501-beta\build\Microsoft.Net.RoslynDiagnostics.props')" />
+  <ImportGroup Label="Settings">
+    <Import Project="..\..\..\Tools\Microsoft.CodeAnalysis.Toolset.Open\Targets\VSL.Settings.targets" />
+  </ImportGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <OutDir>..\..\..\..\Binaries\$(Configuration)\</OutDir>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9508F118-F62E-4C16-A6F4-7C3B56E166AD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Microsoft.CodeAnalysis.CompilerServer</RootNamespace>
+    <AssemblyName>VBCSCompiler</AssemblyName>
+    <LargeAddressAware>true</LargeAddressAware>
+    <StyleCopEnabled>false</StyleCopEnabled>
+    <SolutionDir Condition="'$(SolutionDir)' == '' OR '$(SolutionDir)' == '*Undefined*'">..\..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NeedsFakeSign>true</NeedsFakeSign>
+  </PropertyGroup>
+  <ItemGroup Label="Project References">
+    <ProjectReference Include="..\..\CSharp\Desktop\CSharpCodeAnalysis.Desktop.csproj">
+      <Project>{079af8ef-1058-48b6-943f-ab02d39e0641}</Project>
+      <Name>CSharpCodeAnalysis.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CSharp\Portable\CSharpCodeAnalysis.csproj">
+      <Project>{B501A547-C911-4A05-AC6E-274A50DFF30E}</Project>
+      <Name>CSharpCodeAnalysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualBasic\Desktop\BasicCodeAnalysis.Desktop.vbproj">
+      <Project>{73f3e2c5-d742-452e-b9e1-20732ddbc75d}</Project>
+      <Name>BasicCodeAnalysis.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualBasic\Portable\BasicCodeAnalysis.vbproj">
+      <Project>{2523D0E6-DF32-4A3E-8AE0-A19BFFAE2EF6}</Project>
+      <Name>BasicCodeAnalysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Desktop\CodeAnalysis.Desktop.csproj">
+      <Project>{dfa21ca1-7f96-47ee-940c-069858e81727}</Project>
+      <Name>CodeAnalysis.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Portable\CodeAnalysis.csproj">
+      <Project>{1EE8CAD3-55F9-4D91-96B2-084641DA9A6C}</Project>
+      <Name>CodeAnalysis</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.1.32.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\packages\System.Collections.Immutable.1.1.32-beta\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reflection.Metadata, Version=1.0.17.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\packages\System.Reflection.Metadata.1.0.17-beta\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuildProtocol.cs" />
+    <Compile Include="CompilerRequestHandler.cs" />
+    <Compile Include="CompilerServerLogger.cs" />
+    <Compile Include="CSharpCompilerServer.cs" />
+    <Compile Include="KeepAliveTimer.cs" />
+    <Compile Include="MetadataCache.cs" />
+    <Compile Include="ServerDispatcher.AnalyzerWatcher.cs" />
+    <Compile Include="ServerDispatcher.Connection.cs" />
+    <Compile Include="ServerDispatcher.cs" />
+    <Compile Include="ServerDispatcher.MemoryHelper.cs" />
+    <Compile Include="VisualBasicCompilerServer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleToTest Include="Roslyn.Compilers.CSharp.CommandLine.UnitTests" />
+    <InternalsVisibleToTest Include="Roslyn.Compilers.VisualBasic.CommandLine.UnitTests" />
+    <InternalsVisibleToTest Include="Roslyn.Compilers.CompilerServer.UnitTests" />
+  </ItemGroup>
+  <ImportGroup Label="Targets">
+    <Import Project="..\..\..\Tools\Microsoft.CodeAnalysis.Toolset.Open\Targets\VSL.Imports.targets" />
+    <Import Project="..\..\..\..\packages\StyleCop.MSBuild.4.7.48.2\build\StyleCop.MSBuild.Targets" Condition="Exists('..\..\..\..\packages\StyleCop.MSBuild.4.7.48.2\build\StyleCop.MSBuild.Targets')" />
+    <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\..\..\packages\Microsoft.Net.ToolsetCompilers.0.7.4101501-beta\build\Microsoft.Net.ToolsetCompilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\Microsoft.Net.ToolsetCompilers.0.7.4101501-beta\build\Microsoft.Net.ToolsetCompilers.props'))" />
+    <Error Condition="!Exists('..\..\..\..\packages\Microsoft.Net.RoslynDiagnostics.0.7.4101501-beta\build\Microsoft.Net.RoslynDiagnostics.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\Microsoft.Net.RoslynDiagnostics.0.7.4101501-beta\build\Microsoft.Net.RoslynDiagnostics.props'))" />
+  </Target>
+</Project>

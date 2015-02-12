@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DirectlyAwaitingTaskDescription" xml:space="preserve">
+    <value>Do not directly await a Task</value>
+  </data>
+  <data name="DirectlyAwaitingTaskMessage" xml:space="preserve">
+    <value>Do not directly await a Task without calling ConfigureAwait</value>
+  </data>
+  <data name="DontUseCodeActionCreateDescription" xml:space="preserve">
+    <value>Do not use generic CodeAction.Create to create CodeAction</value>
+  </data>
+  <data name="DontUseCodeActionCreateMessage" xml:space="preserve">
+    <value>Consider creating unique code action type per different fix. it will help us to see how each code action is used. otherwise, we will only see bunch of generic code actions being used.</value>
+  </data>
+  <data name="MissingSharedAttributeDescription" xml:space="preserve">
+    <value>Parts exported with MEFv2 must be marked as Shared.</value>
+  </data>
+  <data name="MissingSharedAttributeMessage" xml:space="preserve">
+    <value>Part exported with MEFv2 must be marked with the Shared attribute.</value>
+  </data>
+  <data name="MixedVersionsOfMefAttributesDescription" xml:space="preserve">
+    <value>Do not mix attributes from different versions of MEF</value>
+  </data>
+  <data name="MixedVersionsOfMefAttributesMessage" xml:space="preserve">
+    <value>Attribute '{0}' comes from a different version of MEF than the export attribute on '{1}'</value>
+  </data>
+  <data name="UseArrayEmptyDescription" xml:space="preserve">
+    <value>Avoid zero-length array allocations.</value>
+  </data>
+  <data name="UseArrayEmptyMessage" xml:space="preserve">
+    <value>Avoid unnecessary zero-length array allocations.  Use Array.Empty&lt;T&gt;() instead.</value>
+  </data>
+  <data name="ImplementIEquatableDescription" xml:space="preserve">
+    <value>Implement IEquatable&lt;T&gt; when overriding Object.Equals</value>
+  </data>
+  <data name="ImplementIEquatableMessage" xml:space="preserve">
+    <value>Type {0} should implement IEquatable&lt;T&gt; because it overrides Equals</value>
+  </data>
+  <data name="OverrideObjectEqualsDescription" xml:space="preserve">
+    <value>Override Object.Equals(object) when implementing IEquatable&lt;T&gt; </value>
+  </data>
+  <data name="OverrideObjectEqualsMessage" xml:space="preserve">
+    <value>Type {0} should override Equals because it implements IEquatable&lt;T&gt;</value>
+  </data>
+  <data name="UseEmptyEnumerableDescription" xml:space="preserve">
+    <value>Use SpecializedCollections.EmptyEnumerable&lt;T&gt;()</value>
+  </data>
+  <data name="UseEmptyEnumerableMessage" xml:space="preserve">
+    <value>Use SpecializedCollections.EmptyEnumerable&lt;T&gt;()</value>
+  </data>
+  <data name="UseSingletonEnumerableDescription" xml:space="preserve">
+    <value>Use SpecializedCollections.SingletonEnumerable&lt;T&gt;()</value>
+  </data>
+  <data name="UseSingletonEnumerableMessage" xml:space="preserve">
+    <value>Use SpecializedCollections.SingletonEnumerable&lt;T&gt;()</value>
+  </data>
+  <data name="UseSiteDiagnosticsCheckerDescription" xml:space="preserve">
+    <value>Invoke the correct property to ensure correct use site diagnostics.</value>
+  </data>
+  <data name="UseSiteDiagnosticsCheckerMessage" xml:space="preserve">
+    <value>Do not directly invoke the property '{0}', instead use '{0}NoUseSiteDiagnostics'.</value>
+  </data>
+  <data name="UseProperCrefTagsDescription" xml:space="preserve">
+    <value>Use cref tags without a type prefix.</value>
+  </data>
+  <data name="UseProperCrefTagsMessage" xml:space="preserve">
+    <value>cref tag has prefix '{0}', which should be removed unless the type or member cannot be accessed.</value>
+  </data>
+  <data name="CancellationTokenMustBeLastDescription" xml:space="preserve">
+    <value>CancellationToken parameters must come last</value>
+  </data>
+  <data name="CancellationTokenMustBeLastMessage" xml:space="preserve">
+    <value>Method '{0}' should take CancellationToken as the last parameter</value>
+  </data>
+  <data name="DoNotCallToImmutableArrayMessage" xml:space="preserve">
+    <value>Do not call ToImmutableArray on an ImmutableArray&lt;T&gt; value.</value>
+  </data>
+</root>
